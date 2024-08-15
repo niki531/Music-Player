@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service OccupationHandler {
+  rpc UpdateUserPlayingStatus(UpdateUserPlayingStatusRequest) returns (StatusResponse);
+  rpc GetUserPlayingStatus(GetUserPlayingStatusRequest) returns (PlayingStatusResponse);
+}
+
+message UpdateUserPlayingStatusRequest {
+  string uid = 1;
+  bool playing = 2;
+}
+
+message GetUserPlayingStatusRequest {
+  string uid = 1;
+}
+
+message PlayingStatusResponse {
+  bool playing = 1;
+}
+
+message StatusResponse {
+  string msg = 1;
+}
