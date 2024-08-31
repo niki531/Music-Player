@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+service TrackService {
+  rpc GetTracks (Empty) returns (TrackList);
+  rpc GetTrackById (TrackRequest) returns (TrackDetail);
+  rpc DeleteTrack (TrackRequest) returns (OperationStatus);
+}
+
+message Empty {}
+
+message TrackRequest {
+  string track_id = 1;
+}
+
+message Track {
+  string track_id = 1;
+  string title = 2;
+  repeated string artist = 3;
+  string album = 4;
+  string album_id = 5;
+  string genre = 6;
+  string copyright = 7;
+  string length = 8;
+  int32 track_number = 9;
+  string quality = 10;
+  string file = 11;
+}
+
+message TrackDetail {
+  Track data = 1;
+}
+
+message TrackList {
+  repeated Track data = 1;
+  int32 total = 2;
+}
+
+message OperationStatus {
+  string msg = 1;
+  int32 code = 2;
+}
