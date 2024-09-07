@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service StreamService {
+  rpc StreamTrackById(StreamTrackRequest) returns (stream TrackData){};
+}
+
+message StreamTrackRequest {
+  string track_id = 1;
+  string uid = 2;
+}
+
+message TrackData {
+  bytes data = 1;
+}

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service UserService {
+  rpc LogoutUser (LogoutUserRequest) returns (OperationStatus);  
+  rpc GetUserInfo (GetUserInfoRequest) returns (UserInfoResponse);  
+}
+
+message LogoutUserRequest { 
+  string uid = 1;
+  string token = 2;
+}
+
+message GetUserInfoRequest { 
+  string uid = 1;
+}
+
+message UserInfoResponse {  
+  string uid = 1;
+  string name = 2;
+  bool subscribe = 3;
+  string subscribe_expired = 4;
+}
+
+message OperationStatus {  
+  string msg = 1;
+  int32 code = 2;
+}

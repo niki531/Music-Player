@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+service UserLibraryService {
+  rpc AddUserLibrary (AddUserLibraryRequest) returns (OperationStatus);
+  rpc GetUserLibrary (GetUserLibraryRequest) returns (UserLibraryResponse);
+  rpc RemovePlaylistFromLibrary (RemovePlaylistRequest) returns (OperationStatus);
+}
+
+message AddUserLibraryRequest {
+  string uid = 1;
+  string id = 2;
+  string type = 3;
+}
+
+message GetUserLibraryRequest {
+  string uid = 1;
+  string type = 2;
+}
+
+message RemovePlaylistRequest {
+  string uid = 1;
+  string pid = 2;
+}
+
+message UserLibraryItem {
+  string id = 1;
+  string type = 2;
+  string added_date = 3;
+}
+
+message UserLibraryResponse {
+  repeated UserLibraryItem data = 1;
+}
+
+message OperationStatus {
+  string msg = 1;
+  int32 code = 2;
+}
